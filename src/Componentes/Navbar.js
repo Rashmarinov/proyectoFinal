@@ -13,7 +13,7 @@ const Navbar = () => (
     </div>
     
     <div class="navButons">
-      <a href="/registro">
+      <a href="/logIn">
       <img src="/img/svg/botonPerfil.svg" alt="" />
     </a>
 </div>
