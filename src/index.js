@@ -4,7 +4,6 @@ import './css/main.css';
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import HeaderMovil from './Componentes/HeaderMovil';
-import Navbar from './Componentes/Navbar';
 import Partidas from './Componentes/Juegos';
 
 const browserRouter = createBrowserRouter([
@@ -14,7 +13,7 @@ const browserRouter = createBrowserRouter([
     element: <Partidas></Partidas>
   },
   {
-    path: '/SignIn',
+    path: '/registro',
   }
 ])
 

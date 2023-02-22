@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import HeaderMovil from "./HeaderMovil";
 import Navbar from "./Navbar";
 
 function Juegos() {
@@ -21,22 +20,20 @@ function Juegos() {
             /img/smartphone/Banner@2x.webp 2x,
             /img/smartphone/Banner@3x.webp 3x"
         />
-        <img src="" alt="Imagen tablero" />
+        <img className="imagenBanner" src="" alt="Imagen tablero" />
       </picture>
-      <h4>Lorem ipsum dolor sit amet consectetur Amet nibh egestas </h4>
-      <section className="partidas">
-        <ul>
-          {juegos.map((juego) => (
-            <li key={juego.id}>
-              <h2>{juego.juego}</h2>
-              <p>Jugadores: {juego.jugadores.length}</p>
-              <p>Fecha: {juego.fecha}</p>
-              <p>Hora: {juego.hora}</p>
-              <p>Ubicación: {juego.ubicacion}</p>
-            </li>
-          ))}
-        </ul>
-      </section>
+      <h4 className="textoBanner">Lorem ipsum dolor sit amet consectetur Amet nibh egestas </h4>
+      
+      {juegos.map((juego) => (
+        <section  className="partidas" key={juego.id}>
+          <div className="partidas-juego">Juego: {juego.juego}</div>
+          <div className="partidas-jugadores">Jugadores: {juego.jugadores.length}</div>
+          <div className="partidas-fecha">Fecha: {juego.fecha}</div>
+          <div className="partidas-hora">Hora: {juego.hora}</div>
+          <div className="partidas-ubicacion">Ubicación: {juego.ubicacion}</div>
+          
+        </section>
+      ))}
       <Navbar></Navbar>
     </div>
   );
