@@ -13,8 +13,8 @@ function Juegos() {
   }, []);
 
   return (
-    <div className="banner">
-            <picture>
+    <div className="container">
+      <picture>
         <source
           srcSet="
             /img/smartphone/Banner.webp 1x,
@@ -23,17 +23,20 @@ function Juegos() {
         />
         <img src="" alt="Imagen tablero" />
       </picture>
-      <ul>
-        {juegos.map((juego) => (
-          <li key={juego.id}>
-            <h2>{juego.juego}</h2>
-            <p>Jugadores: {juego.jugadores.length}</p>
-            <p>Fecha: {juego.fecha}</p>
-            <p>Hora: {juego.hora}</p>
-            <p>Ubicación: {juego.ubicacion}</p>
-          </li>
-        ))}
-      </ul>
+      <h4>Lorem ipsum dolor sit amet consectetur Amet nibh egestas </h4>
+      <section className="partidas">
+        <ul>
+          {juegos.map((juego) => (
+            <li key={juego.id}>
+              <h2>{juego.juego}</h2>
+              <p>Jugadores: {juego.jugadores.length}</p>
+              <p>Fecha: {juego.fecha}</p>
+              <p>Hora: {juego.hora}</p>
+              <p>Ubicación: {juego.ubicacion}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
       <Navbar></Navbar>
     </div>
   );

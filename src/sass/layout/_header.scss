@@ -9,12 +9,13 @@
 // }
 
 .navlist{
+    height: 77px;
     width: 100vw;
     display: flex;
     justify-content: space-evenly;
+    align-items: center;
     background-color: $color_grisClaro;
-    align-items: flex-end;
-    position: fixed;
+    position: sticky;
     bottom: 0;
 }
 
@@ -32,9 +33,17 @@
     background-color: $color_azulOscuro;
     height: 66px;
     text-align: center;
+    margin-bottom: 10px;
 }
 
-.banner{
-    margin-top: 10px;
+.container{
     text-align: center;
+}
+
+#root{
+    background-color: $color_grisClaro;
+}
+
+.partidas{
+    background-color: $color_fondo;
 }
