@@ -1,0 +1,40 @@
+[  {    "id": 1,    "juego": "Ajedrez",    "jugadores": ["Ana", "Juan"],
+    "fecha": "2022-05-15",
+    "hora": "14:30",
+    "ubicacion": "Biblioteca central"
+  },
+  {
+    "id": 2,
+    "juego": "Póker",
+    "jugadores": ["Pedro", "María", "Carlos"],
+    "fecha": "2022-06-01",
+    "hora": "20:00",
+    "ubicacion": "Casa de Pedro"
+  },
+  {
+    "id": 3,
+    "juego": "Dominó",
+    "jugadores": ["Luis", "Marta", "Rosa"],
+    "fecha": "2022-06-10",
+    "hora": "15:00",
+    "ubicacion": "Cafetería Los Amigos"
+  },
+  {
+    "id": 4,
+    "juego": "Scrabble",
+    "jugadores": ["Javier", "Lucía"],
+    "fecha": "2022-06-20",
+    "hora": "16:00",
+    "ubicacion": "Parque principal"
+  },
+  {
+    "id": 5,
+    "juego": "Monopoly",
+    "jugadores": ["Santiago", "Andrea", "Camila", "Diego"],
+    "fecha": "2022-07-05",
+    "hora": "19:30",
+    "ubicacion": "Casa de Santiago"
+  }
+]
+
+

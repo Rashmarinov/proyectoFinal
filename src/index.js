@@ -3,13 +3,15 @@ import ReactDOM from 'react-dom/client';
 import './css/main.css';
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import HeaderMovil from './Componentes/HeaderMovil';
 import Navbar from './Componentes/Navbar';
-
+import Partidas from './Componentes/Juegos';
 
 const browserRouter = createBrowserRouter([
   {
     path: '/',
-    element: <Navbar></Navbar>
+    
+    element: <Partidas></Partidas>
   },
   {
     path: '/SignIn',
@@ -19,6 +21,7 @@ const browserRouter = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+      <HeaderMovil></HeaderMovil>
       <RouterProvider router={browserRouter} />
   </React.StrictMode>
 );

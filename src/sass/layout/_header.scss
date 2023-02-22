@@ -1,3 +1,40 @@
 /* ********* */
 /* @HEADER */
 /* ********* */
+
+// body{
+//     height: 100vh;
+//     width: 100vw;
+//     background-color: $color_Fondo;
+// }
+
+.navlist{
+    width: 100vw;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: $color_grisClaro;
+    align-items: flex-end;
+    position: fixed;
+    bottom: 0;
+}
+
+.navButons{
+    height: 70px;
+    width: 70px;
+    display: flex;
+    background-color: $color_azulOscuro;
+    border-radius: 7.78px;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo{
+    background-color: $color_azulOscuro;
+    height: 66px;
+    text-align: center;
+}
+
+.banner{
+    margin-top: 10px;
+    text-align: center;
+}
