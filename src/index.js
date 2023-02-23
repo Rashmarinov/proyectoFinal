@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import HeaderMovil from './Componentes/HeaderMovil';
 import Partidas from './Componentes/Juegos';
 import LogIn from './Componentes/LogIn';
+import Registrar from './Componentes/Registrar';
 
 const browserRouter = createBrowserRouter([
   {
@@ -18,6 +19,7 @@ const browserRouter = createBrowserRouter([
   },
   {
     path: '/Registrar',
+    element: <Registrar></Registrar>
   }
 ])
 

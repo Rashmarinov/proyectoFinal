@@ -1,4 +1,54 @@
-.logIn{
-    height: 380px;
+.logIn{   
     background-color: $color_fondo;
 }
+
+.logIn--form{
+    height: 420px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.logIn--input, .logIn--button{
+    width: 80%;
+    height: 40px;
+    margin: 20px;
+    border-radius: 7px;
+}
+
+.logIn--button{
+    color: $color_fondo;
+    background-color: $color_azulOscuro;
+}
+
+a{
+    color: $color_fondo;
+    text-decoration: none;
+}
+
+
+.SignIn{   
+    background-color: $color_fondo;
+}
+
+.SignIn--form{
+    height: 440px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.SignIn--input, .SignIn--button{
+    width: 80%;
+    height: 40px;
+    margin: 12px;
+    border-radius: 7px;
+}
+
+.SignIn--button{
+    color: $color_fondo;
+    background-color: $color_azulOscuro;
+}
+
