@@ -7,7 +7,8 @@ import HeaderMovil from './Componentes/HeaderMovil';
 import Partidas from './Componentes/Juegos';
 import LogIn from './Componentes/LogIn';
 import Registrar from './Componentes/Registrar';
-import Apuntarse from './Componentes/ApuntarsePartida';
+import ApuntarsePartida from './Componentes/ApuntarsePartida';
+import AñadirPartida from './Componentes/AñadirPartida';
 
 
 const browserRouter = createBrowserRouter([
@@ -24,9 +25,16 @@ const browserRouter = createBrowserRouter([
     element: <Registrar></Registrar>
   },
   {
-    path: '/apuntarsePartida/:id',
-    element: <Apuntarse></Apuntarse>
-  }
+    path: '/ApuntarsePartida/:id',
+    element: <ApuntarsePartida></ApuntarsePartida>
+  },
+  {
+    path: '/AñadirPartida',
+    element: <AñadirPartida></AñadirPartida>
+  },
+
+
+
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
