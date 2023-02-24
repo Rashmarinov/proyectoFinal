@@ -25,7 +25,7 @@ const Navbar = () => (
       <ul class="desplegable">
         <li>Buscar</li>
         <li>
-          <a class="inicio" href="">
+          <a class="inicio" href="/privacidad">
             Privacidad
           </a>
         </li>
