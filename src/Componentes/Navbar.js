@@ -1,5 +1,3 @@
-import Desplegable from "./Desplegable";
-
 const Navbar = () => (
   <div class="navlist">
     <div class="navButons">
