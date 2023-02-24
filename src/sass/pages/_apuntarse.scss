@@ -1,0 +1,19 @@
+.apuntarsePartida{
+    background-color: $color_fondo;
+    height: 420px;
+    margin-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.apuntarsePartida--Info{
+    width: 80%;
+    height: 40px;
+    margin: 12px;
+}
+
+.containerApuntarse{
+
+}

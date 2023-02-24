@@ -7,6 +7,8 @@ import HeaderMovil from './Componentes/HeaderMovil';
 import Partidas from './Componentes/Juegos';
 import LogIn from './Componentes/LogIn';
 import Registrar from './Componentes/Registrar';
+import Apuntarse from './Componentes/ApuntarsePartida';
+
 
 const browserRouter = createBrowserRouter([
   {
@@ -20,6 +22,10 @@ const browserRouter = createBrowserRouter([
   {
     path: '/Registrar',
     element: <Registrar></Registrar>
+  },
+  {
+    path: '/apuntarsePartida/:id',
+    element: <Apuntarse></Apuntarse>
   }
 ])
 

@@ -31,7 +31,9 @@ function Juegos() {
           <div className="partidas-fecha">Fecha: {juego.fecha}</div>
           <div className="partidas-hora">Hora: {juego.hora}</div>
           <div className="partidas-ubicacion">Ubicación: {juego.ubicacion}</div>
-          
+          <a href={"/apuntarsePartida/" + juego.id}>
+            <button>Ver partida</button>
+          </a> 
         </section>
       ))}
       <Navbar></Navbar>

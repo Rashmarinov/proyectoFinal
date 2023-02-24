@@ -9,8 +9,9 @@
     justify-content: space-evenly;
     align-items: center;
     background-color: $color_grisClaro;
-    // position: sticky;
-    position: absolute;
+    //position: sticky;
+    //position: absolute;
+    position: fixed;
     bottom: 0;
 }
 
