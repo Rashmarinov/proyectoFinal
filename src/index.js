@@ -4,7 +4,7 @@ import './css/main.css';
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import HeaderMovil from './Componentes/HeaderMovil';
-import Partidas from './Componentes/Juegos';
+import Juegos from './Componentes/Juegos';
 import LogIn from './Componentes/LogIn';
 import Registrar from './Componentes/Registrar';
 import ApuntarsePartida from './Componentes/ApuntarsePartida';
@@ -14,27 +14,25 @@ import AñadirPartida from './Componentes/AñadirPartida';
 const browserRouter = createBrowserRouter([
   {
     path: '/',
-    element: <Partidas></Partidas>
+    element: <Juegos></Juegos>
   },
   {
     path: '/logIn',
     element: <LogIn></LogIn>
   },
   {
-    path: '/Registrar',
+    path: '/registrar',
     element: <Registrar></Registrar>
   },
   {
-    path: '/ApuntarsePartida/:id',
+    path: '/apuntarsePartida/:id',
     element: <ApuntarsePartida></ApuntarsePartida>
   },
   {
-    path: '/AñadirPartida',
+    path: '/añadirPartida',
     element: <AñadirPartida></AñadirPartida>
   },
-
-
-
+  
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
