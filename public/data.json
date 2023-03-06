@@ -1,4 +1,6 @@
-[  {    "id": 1,    "juego": "Ajedrez",    "jugadores": ["Ana", "Juan"],
+[  {"id": 1,    
+    "juego": "Ajedrez",    
+    "jugadores": ["Ana", "Juan"],
     "fecha": "2022-05-15",
     "hora": "14:30",
     "ubicacion": "Biblioteca central"
