@@ -10,7 +10,6 @@ import Registrar from './Componentes/Registrar';
 import ApuntarsePartida from './Componentes/ApuntarsePartida';
 import AñadirPartida from './Componentes/AñadirPartida';
 
-
 const browserRouter = createBrowserRouter([
   {
     path: '/',

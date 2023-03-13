@@ -7,24 +7,20 @@ const Registrar = () => {
   const [email, setEmail] = useState("");
   const [contrasena, setContrasena] = useState("");
   const [repetirContrasena, setRepetirContrasena] = useState("");
+  const [errores, setErrores] = useState({});
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     // Validar formulario
-    if (
-      nombre.trim() === "" ||
-      direccion.trim() === "" ||
-      email.trim() === "" ||
-      contrasena.trim() === "" ||
-      repetirContrasena.trim() === ""
-    ) {
-      // Mostrar mensaje de error o realizar alguna acción
+    const erroresValidacion = validarFormulario();
+    if (Object.keys(erroresValidacion).length > 0) {
+      setErrores(erroresValidacion);
       return;
     }
 
     if (contrasena !== repetirContrasena) {
-      // Mostrar mensaje de error o realizar alguna acción
+      setErrores({ repetirContrasena: "Las contraseñas no coinciden" });
       return;
     }
 
@@ -32,51 +28,131 @@ const Registrar = () => {
     console.log("Formulario enviado");
   };
 
+  const validarFormulario = () => {
+    const erroresValidacion = {};
+    const nombreRegex = /^[a-zA-Z]+\s[a-zA-Z]+$/;
+    const direccionRegex = /^\S+\s\S+\s\d+$/;
+    const emailRegex = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+    const contrasenaRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,}$/;
+
+    // Validar nombre
+    if (!nombreRegex.test(nombre.trim())) {
+      erroresValidacion.nombre =
+      "Nombre inválido";
+        // "Nombre y apellido son requeridos, solo se permiten letras y espacios, longitud mínima de 3 caracteres y máxima de 20 caracteres.";
+    }
+
+    // Validar dirección
+    if (!direccionRegex.test(direccion.trim())) {
+      erroresValidacion.direccion =
+      "Dirección inválida";
+        // "Dirección debe contener al menos 2 palabras y un número.";
+    }
+
+    // Validar email
+    if (!emailRegex.test(email.trim())) {
+      erroresValidacion.email = "Email inválido";
+    }
+
+    // Validar contraseña
+    if (!contrasenaRegex.test(contrasena)) {
+      erroresValidacion.contrasena =
+      "Contraseña inválida";
+        // "Contraseña debe contener al menos una letra mayúscula, otra minúscula, un carácter especial, un número y tener un longitud mínima de 6 caracteres.";
+    }
+
+    // Validar repetir contraseña
+    // if (contrasena !== repetirContrasena) {
+    //   setErrores({ repetirContrasena: "Las contraseñas no coinciden" });
+    //   return;
+    // }
+
+
+    return erroresValidacion;
+  };
+
   return (
     <div className="container">
       <h1>Registrate</h1>
       <section className="SignIn">
-        <form className="SignIn--form" onSubmit={handleSubmit}>
+        <form className="SignIn--form" onSubmit={handleSubmit} action="../src/registro.php" method="POST">
+
+          {/* Input Nombre */}
           <input
-            className="SignIn--input"
+            className={`SignIn--input ${
+              errores.nombre ? "SignIn--input-error" : ""
+            }`}
             placeholder="Nombre"
             type="text"
             id="nombre"
             value={nombre}
             onChange={(e) => setNombre(e.target.value)}
+            
           />
+          {errores.nombre && (
+            <span className="SignIn--error">{errores.nombre}</span>
+          )}
+          
+          {/* Input Direccion */}
           <input
-            className="SignIn--input"
+            className={`SignIn--input ${
+              errores.direccion ? "SignIn--input-error" : ""
+            }`}
             placeholder="Dirección"
             type="text"
             id="direccion"
             value={direccion}
             onChange={(e) => setDireccion(e.target.value)}
           />
+          {errores.direccion && (
+            <span className="SignIn--error">{errores.direccion}</span>
+          )}
+          
+          {/* Input Email */}
           <input
-            className="SignIn--input"
+            className={`SignIn--input ${
+              errores.email ? "SignIn--input-error" : ""
+            }`}
             placeholder="Email"
             type="email"
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
+          {errores.email && (
+            <span className="SignIn--error">{errores.email}</span>
+          )}
+
+          {/* Input Contraseña */}
           <input
-            className="SignIn--input"
+            className={`SignIn--input ${
+              errores.contrasena ? "SignIn--input-error" : ""
+            }`}
             placeholder="Contraseña"
-            type="password"
+            type=""
             id="contrasena"
             value={contrasena}
             onChange={(e) => setContrasena(e.target.value)}
           />
+          {errores.contrasena && (
+            <span className="SignIn--error">{errores.contrasena}</span>
+          )}
+          
+          {/* Input Repetir Contraseña */}
           <input
-            className="SignIn--input"
+            className={`SignIn--input ${
+              errores.repetirContrasena ? "SignIn--input-error" : ""
+            }`}
             placeholder="Repetir Contraseña"
-            type="password"
+            type=""
             id="repetirContrasena"
             value={repetirContrasena}
             onChange={(e) => setRepetirContrasena(e.target.value)}
           />
+          {errores.repetirContrasena && (
+            <span className="SignIn--error">{errores.repetirContrasena}</span>
+          )}
+
           <button className="SignIn--button" type="submit">
             Sign Up
           </button>
