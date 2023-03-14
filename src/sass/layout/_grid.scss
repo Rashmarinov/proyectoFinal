@@ -35,3 +35,42 @@
     grid-column: 1 / 2;
     grid-row: 3 / 3;
 }
+
+/***************/
+/* Mis partidas*/
+/***************/
+
+.misPartidas{
+    height: 125px;
+    background-color: $color_fondo;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    text-align: left;
+    padding-left: 10px;
+    padding-top: 10px;
+    border: 1px solid $color_azulOscuro;
+}
+.misPartidas-juegos{
+    grid-column: 2 / 2;
+    grid-row: 1 / 3;
+}
+
+.misPartidas-jugadores{
+    grid-column: 2 / 2;
+    grid-row: 2 / 3;
+}
+
+.misPartidas-fecha{
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;
+}
+
+.misPartidas-hora{
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+}
+
+.misPartidas-ubicacion{
+    grid-column: 1 / 2;
+    grid-row: 3 / 3;
+}

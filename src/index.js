@@ -9,6 +9,8 @@ import LogIn from './Componentes/LogIn';
 import Registrar from './Componentes/Registrar';
 import ApuntarsePartida from './Componentes/ApuntarsePartida';
 import AñadirPartida from './Componentes/AñadirPartida';
+import MisPartidas from  './Componentes/MisPartidas';
+
 
 const browserRouter = createBrowserRouter([
   {
@@ -30,6 +32,10 @@ const browserRouter = createBrowserRouter([
   {
     path: '/añadirPartida',
     element: <AñadirPartida></AñadirPartida>
+  },
+  {
+    path: '/misPartidas',
+    element: <MisPartidas></MisPartidas>
   },
   
 ])

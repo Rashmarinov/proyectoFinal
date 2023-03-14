@@ -1,11 +1,13 @@
 <?php
 
+include 'cors.php';
+
 class Conexion extends PDO
 	{
-		private $hostBd = 'localhost';
-		private $nombreBd = 'proyectoFinal';
-		private $usuarioBd = 'edib';
-		private $passwordBd = 'edib';
+		private $hostBd = '127.0.0.1';
+		private $nombreBd = 'mallorcaGames';
+		private $usuarioBd = 'root';
+		private $passwordBd = '';
 		
 		public function __construct()
 		{

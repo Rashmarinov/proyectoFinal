@@ -1,7 +1,7 @@
 <?php
 // Incluimos el archivo de conexión mediante PDO
 include 'funciones.php';
-
+include_once "cors.php";
 // Instanciamos un objeto Conexion (PDO)
 
 

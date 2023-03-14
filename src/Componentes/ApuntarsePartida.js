@@ -10,9 +10,9 @@ function ApuntarsePartida() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:80/edib/proyectoFinal/src/php/apiRest.php?tabla=partidas&id=${id}`);
+        const response = await axios.get(`http://localhost:80/edib/proyectoFinal/src/php/apiRestActualizada.php?tabla=partidas&id=${id}`);
         console.log(response.data)
-        setPartida(response.data);
+        setPartida(response.data[0]);
       } catch (error) {
         console.log(error);
       }
@@ -21,11 +21,13 @@ function ApuntarsePartida() {
     fetchData();
   }, [id]);
 
+
   return (
+    
     <div className="containerApuntarse">   
       <section className="apuntarsePartida" >
         <p className="apuntarsePartida--Info">Juego: {partida.juego}</p>
-        <p className="apuntarsePartida--Info">Jugadores: {partida.jugadores?.split(',').length || 0}</p>
+        {/* <p className="apuntarsePartida--Info">Jugadores: {partida.jugadores?.split(',').length || 0}</p> */}
         <p className="apuntarsePartida--Info">Fecha: {partida.fecha}</p>
         <p className="apuntarsePartida--Info">Hora: {partida.hora}</p>
         <p className="apuntarsePartida--Info">Ubicación: {partida.ubicacion}</p>

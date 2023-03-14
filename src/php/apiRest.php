@@ -3,7 +3,6 @@ include_once "cors.php";
 include 'funciones.php';
 
 $pdo = new Conexion();
-header('Access-Control-Allow-Origin: *');
 
 $tabla = $_GET['tabla'];
 

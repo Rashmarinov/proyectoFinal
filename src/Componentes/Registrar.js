@@ -26,7 +26,7 @@ const Registrar = () => {
     }
 
     // Enviar formulario
-    axios.post("http://localhost:80/edib/proyectoFinal/src/php/apiRest.php?tabla=usuarios", {
+    axios.post("http://localhost:80/edib/proyectoFinal/src/php/apiRestActualizada.php?tabla=usuarios", {
       nombre,
       direccion,
       email,
