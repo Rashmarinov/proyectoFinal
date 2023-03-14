@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Navbar from "./Navbar";
+import axios from 'axios';
 
 const Registrar = () => {
   const [nombre, setNombre] = useState("");
@@ -25,8 +26,20 @@ const Registrar = () => {
     }
 
     // Enviar formulario
-    console.log("Formulario enviado");
+    axios.post("http://localhost:80/edib/proyectoFinal/src/php/apiRest.php?tabla=usuarios", {
+      nombre,
+      direccion,
+      email,
+      contrasena,
+    })
+    .then((response) => {
+      console.log("Respuesta de la API:", response);
+    })
+    .catch((error) => {
+      console.error("Error al enviar el formulario:", error);
+    });
   };
+
 
   const validarFormulario = () => {
     const erroresValidacion = {};
@@ -61,13 +74,6 @@ const Registrar = () => {
         // "Contraseña debe contener al menos una letra mayúscula, otra minúscula, un carácter especial, un número y tener un longitud mínima de 6 caracteres.";
     }
 
-    // Validar repetir contraseña
-    // if (contrasena !== repetirContrasena) {
-    //   setErrores({ repetirContrasena: "Las contraseñas no coinciden" });
-    //   return;
-    // }
-
-
     return erroresValidacion;
   };
 
@@ -75,7 +81,7 @@ const Registrar = () => {
     <div className="container">
       <h1>Registrate</h1>
       <section className="SignIn">
-        <form className="SignIn--form" onSubmit={handleSubmit} action="../src/registro.php" method="POST">
+        <form className="SignIn--form" onSubmit={handleSubmit}>
 
           {/* Input Nombre */}
           <input
@@ -86,6 +92,7 @@ const Registrar = () => {
             type="text"
             id="nombre"
             value={nombre}
+            name="nombre"
             onChange={(e) => setNombre(e.target.value)}
             
           />
@@ -102,6 +109,7 @@ const Registrar = () => {
             type="text"
             id="direccion"
             value={direccion}
+            name="direccion"
             onChange={(e) => setDireccion(e.target.value)}
           />
           {errores.direccion && (
@@ -117,6 +125,7 @@ const Registrar = () => {
             type="email"
             id="email"
             value={email}
+            name="email"
             onChange={(e) => setEmail(e.target.value)}
           />
           {errores.email && (
@@ -132,6 +141,7 @@ const Registrar = () => {
             type=""
             id="contrasena"
             value={contrasena}
+            name="contrasena"
             onChange={(e) => setContrasena(e.target.value)}
           />
           {errores.contrasena && (
@@ -147,6 +157,7 @@ const Registrar = () => {
             type=""
             id="repetirContrasena"
             value={repetirContrasena}
+            name="repetirContrasena"
             onChange={(e) => setRepetirContrasena(e.target.value)}
           />
           {errores.repetirContrasena && (

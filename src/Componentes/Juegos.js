@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import axios from 'axios';
+import { Link } from "react-router-dom"; // importar el componente Link
 
 function Juegos() {
-  const [juegos, setJuegos] = useState([]);
+  const [data, setData] = useState([]);
 
-  const baseUrl="http://localhost:80/edib/proyectoFinal/src/php/apiPartidas.php";
+  const baseUrl="http://localhost:80/edib/proyectoFinal/src/php/apiRest.php?tabla=partidas";
 
   const peticionGet=async()=>{
       await axios.get(baseUrl)
       .then(response=>{
-          setJuegos(response.data);
+          setData(response.data);
       })
   }
 
@@ -31,16 +32,16 @@ function Juegos() {
       </picture>
       <h4 className="textoBanner">Lorem ipsum dolor sit amet consectetur Amet nibh egestas </h4>
       
-      {juegos.map((juego) => (
+      {data.map((juego) => (
         <section  className="partidas" key={juego.id}>
           <div className="partidas-juego">Juego: {juego.juego}</div>
           <div className="partidas-jugadores">Jugadores: {juego.jugadores.split(',').length}</div>
           <div className="partidas-fecha">Fecha: {juego.fecha}</div>
           <div className="partidas-hora">Hora: {juego.hora}</div>
           <div className="partidas-ubicacion">Ubicación: {juego.ubicacion}</div>
-          <a href={"/apuntarsePartida/" + juego.id}>
+          <Link to={`/apuntarsePartida/${juego.id_partidas}`}>
             <button>Ver partida</button>
-          </a> 
+          </Link>
         </section>
       ))}
       <Navbar></Navbar>
