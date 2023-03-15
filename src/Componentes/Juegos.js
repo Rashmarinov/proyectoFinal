@@ -15,7 +15,7 @@ function Juegos() {
       setData(response.data);
   
       // Nueva petición para obtener la información de los jugadores
-      axios.get('http://localhost:80/edib/proyectoFinal/src/php/apiRestActualizada.php?tabla=partida_jugador')
+      axios.get('/edib/proyectoFinal/src/php/apiRestActualizada.php?tabla=partida_jugador')
       .then(res => {
         const dataJugadores = res.data;
   

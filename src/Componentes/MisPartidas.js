@@ -6,7 +6,7 @@ import { Link } from "react-router-dom"; // importar el componente Link
 function MisPartidas() {
   const [data, setData] = useState([]);
 
-  const baseUrl="http://localhost:80/edib/proyectoFinal/src/php/apiRest.php?tabla=partidas";
+  const baseUrl="/edib/proyectoFinal/src/php/apiRest.php?tabla=partidas";
 
   const peticionGet=async()=>{
       await axios.get(baseUrl)

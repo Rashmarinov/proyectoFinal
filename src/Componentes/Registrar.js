@@ -26,11 +26,16 @@ const Registrar = () => {
     }
 
     // Enviar formulario
-    axios.post("http://localhost:80/edib/proyectoFinal/src/php/apiRestActualizada.php?tabla=usuarios", {
+    axios.post("edib/proyectoFinal/src/php/apiRestActualizada.php?tabla=usuarios", {
       nombre,
       direccion,
       email,
-      contrasena,
+      contrasena
+    },
+    {
+      headers: {
+        'Content-Type': 'application/json'
+      }
     })
     .then((response) => {
       console.log("Respuesta de la API:", response);

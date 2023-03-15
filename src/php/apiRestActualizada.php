@@ -6,8 +6,8 @@ $pdo = new Conexion();
 
 $tabla = $_GET['tabla'];
 
-if($_SERVER['REQUEST_METHOD'] == 'GET') {
-    if(isset($_GET['id'])) {
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+    if (isset($_GET['id'])) {
         if ($tabla == 'partida_jugador') {
             $query = "SELECT usuarios.* FROM usuarios JOIN partida_jugador ON usuarios.id_usuarios = partida_jugador.id_usuario WHERE partida_jugador.id_partida=:id";
             $stmt = $pdo->prepare($query);
@@ -38,28 +38,31 @@ if($_SERVER['REQUEST_METHOD'] == 'GET') {
     }
 }
 
-if($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if($tabla == 'partidas') {
-        $query = "INSERT INTO partidas (juego, fecha, hora, ubicacion) VALUES(:juego, :fecha, :hora, :ubicacion)";
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $data = json_decode(file_get_contents("php://input"), true);
+
+    if ($tabla == 'partidas') {
+        $query = "INSERT INTO partidas (juego, fecha, hora, ubicacion, max_jugadores) VALUES(:juego, :fecha, :hora, :ubicacion, :max_jugadores)";
         $stmt = $pdo->prepare($query);
-        $stmt->bindValue(':juego', $_POST['juego']);
-        $stmt->bindValue(':fecha', $_POST['fecha']);
-        $stmt->bindValue(':hora', $_POST['hora']);
-        $stmt->bindValue(':ubicacion', $_POST['ubicacion']);
+        $stmt->bindValue(':juego', $data['juego']);
+        $stmt->bindValue(':fecha', $data['fecha']);
+        $stmt->bindValue(':hora', $data['hora']);
+        $stmt->bindValue(':ubicacion', $data['ubicacion']);
+        $stmt->bindValue(':max_jugadores', $data['max_jugadores']);
         $stmt->execute();
     } elseif ($tabla == 'usuarios') {
         $query = "INSERT INTO usuarios (nombre, direccion, email, contrasena) VALUES(:nombre, :direccion, :email, :contrasena)";
         $stmt = $pdo->prepare($query);
-        $stmt->bindValue(':nombre', $_POST['nombre']);
-        $stmt->bindValue(':direccion', $_POST['direccion']);
-        $stmt->bindValue(':email', $_POST['email']);
-        $stmt->bindValue(':contrasena', $_POST['contrasena']);
+        $stmt->bindValue(':nombre', $data['nombre']);
+        $stmt->bindValue(':direccion', $data['direccion']);
+        $stmt->bindValue(':email', $data['email']);
+        $stmt->bindValue(':contrasena', $data['contrasena']);
         $stmt->execute();
     } elseif ($tabla == 'partida_jugador') {
         $query = "INSERT INTO partida_jugador (id_partida, id_usuario) VALUES(:id_partida, :id_usuario)";
         $stmt = $pdo->prepare($query);
-        $stmt->bindValue(':id_partida', $_POST['id_partida']);
-        $stmt->bindValue(':id_usuario', $_POST['id_usuario']);
+        $stmt->bindValue(':id_partida', $data['id_partida']);
+        $stmt->bindValue(':id_usuario', $data['id_usuario']);
         $stmt->execute();
     }
     $idPost = $pdo->lastInsertId();
@@ -73,12 +76,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 if($_SERVER['REQUEST_METHOD'] == 'PUT') {
     if($tabla == 'partidas') {
-        $query = "UPDATE partidas SET juego=:juego, fecha=:fecha, hora=:hora, ubicacion=:ubicacion WHERE id_partidas=:id";
+        $query = "UPDATE partidas SET juego=:juego, fecha=:fecha, hora=:hora, ubicacion=:ubicacion, max_jugadores=:max_jugadores WHERE id_partidas=:id";
         $stmt = $pdo->prepare($query);
         $stmt->bindValue(':juego', $_GET['juego']);
         $stmt->bindValue(':fecha', $_GET['fecha']);
         $stmt->bindValue(':hora', $_GET['hora']);
         $stmt->bindValue(':ubicacion', $_GET['ubicacion']);
+        $stmt->bindValue(':max_jugadores', $_GET['max_jugadores']);
         $stmt->bindValue(':id', $_GET['id']);
         $stmt->execute();
         header("HTTP/1.1 200 Ok");
