@@ -55,16 +55,12 @@ const Registrar = () => {
 
     // Validar nombre
     if (!nombreRegex.test(nombre.trim())) {
-      erroresValidacion.nombre =
-      "Nombre inválido";
-        // "Nombre y apellido son requeridos, solo se permiten letras y espacios, longitud mínima de 3 caracteres y máxima de 20 caracteres.";
+      erroresValidacion.nombre = "Nombre inválido";
     }
 
     // Validar dirección
     if (!direccionRegex.test(direccion.trim())) {
-      erroresValidacion.direccion =
-      "Dirección inválida";
-        // "Dirección debe contener al menos 2 palabras y un número.";
+      erroresValidacion.direccion = "Dirección inválida";
     }
 
     // Validar email
@@ -74,14 +70,18 @@ const Registrar = () => {
 
     // Validar contraseña
     if (!contrasenaRegex.test(contrasena)) {
-      erroresValidacion.contrasena =
-      "Contraseña inválida";
-        // "Contraseña debe contener al menos una letra mayúscula, otra minúscula, un carácter especial, un número y tener un longitud mínima de 6 caracteres.";
+      erroresValidacion.contrasena = "Contraseña inválida";
     }
+
+    // Validar repetir contraseña
+    if (contrasena !== repetirContrasena) {
+      erroresValidacion.repetirContrasena = "Las contraseñas no coinciden";
+    }
+
+    setErrores(erroresValidacion); // actualizar errores al momento
 
     return erroresValidacion;
   };
-
   return (
     <div className="container">
       <h1>Registrate</h1>
@@ -170,7 +170,7 @@ const Registrar = () => {
           )}
 
           <button className="SignIn--button" type="submit">
-            Sign Up
+            Registrarse
           </button>
         </form>
       </section>
@@ -180,3 +180,5 @@ const Registrar = () => {
 };
 
 export default Registrar;
+
+
