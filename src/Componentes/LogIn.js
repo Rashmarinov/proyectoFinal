@@ -59,7 +59,6 @@ function LogIn() {
         Cookies.set('usuario', JSON.stringify(usuario), { expires: 1, path: '/' });
         console.log(usuario)
         window.location.href = "/perfil";
-        console.log("Usuario encontrado")
       } else {
         // Si no se encuentra el usuario, se muestra un mensaje de error
         console.error("No se encontró ningún usuario con el email y contraseña proporcionados.");
@@ -101,10 +100,10 @@ if(loginOk()){
           {passwordError && <div className="error">{passwordError}</div>}
           {errorMessage && <div className="error">{errorMessage}</div>}
           <button className="logIn--button" type="submit">Iniciar sesión</button>
-          <button className="logIn--button">
+        </form>
+        <button className="logIn--button">
             <a href="/Registrar">Crear cuenta</a>
           </button>
-        </form>
       </section>
       <Navbar />
     </div>

@@ -39,9 +39,16 @@ const Registrar = () => {
     })
     .then((response) => {
       console.log("Respuesta de la API:", response);
+      //Si el registro se realiza correctamente, redireccionamos al login
+      window.location.href = "/logIn";
     })
     .catch((error) => {
       console.error("Error al enviar el formulario:", error);
+      if (error.response && error.response.status === 400 && error.response.data.mensaje === "El correo electrónico ya está registrado.") {
+        setErrores({ email: "El correo electrónico ya está registrado." });
+      } else {
+        setErrores({ formulario: "Error al enviar el formulario." });
+      }
     });
   };
 

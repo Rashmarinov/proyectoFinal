@@ -51,6 +51,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $data = json_decode(file_get_contents("php://input"), true);
 
+        // Comprobar si el correo electrónico ya existe
+        $query = "SELECT * FROM usuarios WHERE email=:email";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindValue(':email', $data['email']);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    
+        if ($stmt->rowCount() > 0) {
+            header("HTTP/1.1 400 Bad Request");
+            echo json_encode(array("mensaje" => "El correo electrónico ya está registrado."));
+            exit();
+        }
+
     if ($tabla == 'partidas') {
         $query = "INSERT INTO partidas (juego, fecha, hora, ubicacion, max_jugadores) VALUES(:juego, :fecha, :hora, :ubicacion, :max_jugadores)";
         $stmt = $pdo->prepare($query);
