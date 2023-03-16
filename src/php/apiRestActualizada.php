@@ -7,7 +7,17 @@ $pdo = new Conexion();
 $tabla = $_GET['tabla'];
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    if (isset($_GET['id'])) {
+    if (isset($_GET['email']) && isset($_GET['contrasena'])) {
+        $query = "SELECT * FROM $tabla WHERE email=:email AND contrasena=:contrasena";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindValue(':email', $_GET['email']);
+        $stmt->bindValue(':contrasena', $_GET['contrasena']);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        header("HTTP/1.1 200 Ok");
+        echo json_encode($stmt->fetch());
+        exit;
+    } else if (isset($_GET['id'])) {
         if ($tabla == 'partida_jugador') {
             $query = "SELECT usuarios.* FROM usuarios JOIN partida_jugador ON usuarios.id_usuarios = partida_jugador.id_usuario WHERE partida_jugador.id_partida=:id";
             $stmt = $pdo->prepare($query);

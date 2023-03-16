@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "./Navbar";
 import axios from 'axios';
+import loginOk from "./LoginOk";
+loginOk();
 
 function ApuntarsePartida() {
   const [partida, setPartida] = useState({});

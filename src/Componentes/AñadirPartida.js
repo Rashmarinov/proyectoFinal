@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import Navbar from "./Navbar";
+import loginOk from "./LoginOk";
 
 const AñadirPartida = () => {
+  
+
   const [juego, setJuego] = useState("");
   const [jugadores, setJugadores] = useState("");
   const [fecha, setFecha] = useState("");
@@ -31,6 +34,9 @@ const AñadirPartida = () => {
     // Enviar formulario
     console.log("Formulario enviado");
   };
+
+  //Condición para usuarios logeados
+  if(loginOk()){
 
   return (
     <div className="container">
@@ -85,6 +91,11 @@ const AñadirPartida = () => {
       <Navbar></Navbar>
     </div>
   );
+
+  } else {
+    // Redireccionar al usuario a la página de inicio de sesión
+    window.location.href = "/logIn";
+  }
 };
 
 export default AñadirPartida;

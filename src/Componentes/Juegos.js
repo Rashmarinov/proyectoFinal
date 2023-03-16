@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import axios from 'axios';
 import { Link } from "react-router-dom"; // importar el componente Link
+import loginOk from "./LoginOk";
+
 
 function Juegos() {
   const [data, setData] = useState([]);

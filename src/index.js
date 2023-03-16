@@ -10,8 +10,10 @@ import Registrar from './Componentes/Registrar';
 import ApuntarsePartida from './Componentes/ApuntarsePartida';
 import AñadirPartida from './Componentes/AñadirPartida';
 import MisPartidas from  './Componentes/MisPartidas';
+import Perfil from './Componentes/Perfil';
+import loginOk from './Componentes/LoginOk';
 
-
+loginOk();
 const browserRouter = createBrowserRouter([
   {
     path: '/',
@@ -37,7 +39,10 @@ const browserRouter = createBrowserRouter([
     path: '/misPartidas',
     element: <MisPartidas></MisPartidas>
   },
-  
+  {
+    path:'/perfil',
+    element: <Perfil></Perfil>
+  }
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

@@ -7,7 +7,7 @@ const Navbar = () => (
     </div>
 
     <div class="navButons">
-      <a href="/partidas">
+      <a href="/añadirPartida">
         <img src="/img/svg/botonMesa.svg" alt="" />
       </a>
     </div>

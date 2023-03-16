@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import Navbar from "./Navbar";
 import axios from 'axios';
+import Cookies from 'js-cookie';
+import loginOk from "./LoginOk";
 
 function LogIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleEmailChange = (event) => {
     const value = event.target.value;
@@ -40,34 +43,46 @@ function LogIn() {
       return;
     }
 
-    // Enviar formulario
-    axios.post("edib/proyectoFinal/src/php/apiRestActualizada.php?tabla=usuarios", {
-      email,
-      contrasena: password
-    },
-    {
-      headers: {
-        'Content-Type': 'application/json'
+    axios.get("edib/proyectoFinal/src/php/apiRestActualizada.php?tabla=usuarios", {
+      params: {
+        email: email,
+        contrasena: password
       }
     })
     .then((response) => {
       console.log("Respuesta de la API:", response);
-      const token = response.data.token;
-      localStorage.setItem('token', token); // Almacenar el token en localStorage
-      // Aquí puedes redireccionar a la página de inicio, una vez que el usuario ha iniciado sesión correctamente
+      const usuario = response.data;
+    
+      if(usuario && usuario.email === email && usuario.contrasena === password) {
+        // Si se encuentra el usuario, se puede establecer una cookie de sesión y redireccionar a la página de perfil
+        Cookies.set('user_session', 'true', { expires: 1, path: '/' });
+        Cookies.set('usuario', JSON.stringify(usuario), { expires: 1, path: '/' });
+        console.log(usuario)
+        window.location.href = "/perfil";
+        console.log("Usuario encontrado")
+      } else {
+        // Si no se encuentra el usuario, se muestra un mensaje de error
+        console.error("No se encontró ningún usuario con el email y contraseña proporcionados.");
+        setErrorMessage("Email o contraseña incorrectos");
+      }
     })
     .catch((error) => {
-      console.error("Error al enviar el formulario:", error);
+      console.error("Error al enviar la solicitud:", error);
       // Aquí puedes mostrar un mensaje de error al usuario, si es que hubo un problema al iniciar sesión
     });
   };
+if(loginOk()){  
+  // Redireccionar al usuario a la página de inicio de sesión
+  window.location.href = "/perfil";
+} else {
 
   return (
     <div className="container">
       <h1>Iniciar sesión</h1>
       <section className="logIn">
         <form className="logIn--form" onSubmit={handleSubmit}>
-          <input className="logIn--input"
+          <input
+            className="logIn--input"
             placeholder="Email"
             type="email"
             id="email"
@@ -75,24 +90,28 @@ function LogIn() {
             onChange={handleEmailChange}
           />
           {emailError && <div className="error">{emailError}</div>}
-          <input className="logIn--input"
-          placeholder="Contraseña"
+          <input
+            className="logIn--input"
+            placeholder="Contraseña"
             type="text"
             id="password"
             value={password}
             onChange={handlePasswordChange}
           />
           {passwordError && <div className="error">{passwordError}</div>}
+          {errorMessage && <div className="error">{errorMessage}</div>}
           <button className="logIn--button" type="submit">Iniciar sesión</button>
-
           <button className="logIn--button">
-          <a href="/Registrar">Crear cuenta</a>
-        </button>
+            <a href="/Registrar">Crear cuenta</a>
+          </button>
         </form>
       </section>
-      <Navbar></Navbar>
+      <Navbar />
     </div>
   );
 }
 
-export default LogIn;
+};
+
+  export default LogIn;
+
