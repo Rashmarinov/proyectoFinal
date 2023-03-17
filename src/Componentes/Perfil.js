@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 import axios from 'axios';
 import Cookies from 'js-cookie';
 
-const EditarPerfil = () => {
+const Perfil = () => {
   const [usuario, setUsuario] = useState(null);
 
   useEffect(() => {
@@ -56,4 +56,4 @@ const EditarPerfil = () => {
   );
 };
 
-export default EditarPerfil;
+export default Perfil;

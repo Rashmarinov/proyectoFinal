@@ -12,7 +12,7 @@ import AñadirPartida from './Componentes/AñadirPartida';
 import MisPartidas from  './Componentes/MisPartidas';
 import Perfil from './Componentes/Perfil';
 import loginOk from './Componentes/LoginOk';
-import EditarPerfil from './Componentes/Perfil';
+import EditarPerfil from './Componentes/EditarPerfil';
 
 loginOk();
 const browserRouter = createBrowserRouter([
@@ -47,8 +47,7 @@ const browserRouter = createBrowserRouter([
   {
     path:'/editarPerfil',
     element: <EditarPerfil></EditarPerfil>
-
-  }
+  },
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

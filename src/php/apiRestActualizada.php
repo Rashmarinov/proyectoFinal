@@ -118,35 +118,36 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
 if($_SERVER['REQUEST_METHOD'] == 'PUT') {
+    $data = json_decode(file_get_contents("php://input"), true);
     if($tabla == 'partidas') {
         $query = "UPDATE partidas SET juego=:juego, fecha=:fecha, hora=:hora, ubicacion=:ubicacion, max_jugadores=:max_jugadores WHERE id_partidas=:id";
         $stmt = $pdo->prepare($query);
-        $stmt->bindValue(':juego', $_GET['juego']);
-        $stmt->bindValue(':fecha', $_GET['fecha']);
-        $stmt->bindValue(':hora', $_GET['hora']);
-        $stmt->bindValue(':ubicacion', $_GET['ubicacion']);
-        $stmt->bindValue(':max_jugadores', $_GET['max_jugadores']);
-        $stmt->bindValue(':id', $_GET['id']);
+        $stmt->bindValue(':juego', $data['juego']);
+        $stmt->bindValue(':fecha', $data['fecha']);
+        $stmt->bindValue(':hora', $data['hora']);
+        $stmt->bindValue(':ubicacion', $data['ubicacion']);
+        $stmt->bindValue(':max_jugadores', $data['max_jugadores']);
+        $stmt->bindValue(':id', $data['id']);
         $stmt->execute();
         header("HTTP/1.1 200 Ok");
         exit;
     } elseif ($tabla == 'usuarios') {
-        $query = "UPDATE usuarios SET nombre=:nombre, direccion=:direccion, email=:email, contrasena=:contrasena WHERE id_usuarios=:id";
+        $query = "UPDATE usuarios SET nombre=:nombre, direccion=:direccion, email=:email WHERE id_usuarios=:id";
         $stmt = $pdo->prepare($query);
-        $stmt->bindValue(':nombre', $_GET['nombre']);
-        $stmt->bindValue(':direccion', $_GET['direccion']);
-        $stmt->bindValue(':email', $_GET['email']);
-        $stmt->bindValue(':contrasena', $_GET['contrasena']);
-        $stmt->bindValue(':id', $_GET['id']);
+        $stmt->bindValue(':nombre', $data['nombre']);
+        $stmt->bindValue(':direccion', $data['direccion']);
+        $stmt->bindValue(':email', $data['email']);
+        // $stmt->bindValue(':contrasena', $data['contrasena']);
+        $stmt->bindValue(':id', $data['id']);
         $stmt->execute();
         header("HTTP/1.1 200 Ok");
         exit;
     } elseif ($tabla == 'partida_jugador') {
         $query = "UPDATE partida_jugador SET id_partida=:id_partida, id_usuario=:id_usuario WHERE id_partida=:id_partida AND id_usuario=:id_usuario";
         $stmt = $pdo->prepare($query);
-        $stmt->bindValue(':id_partida', $_GET['id_partida']);
-        $stmt->bindValue(':id_usuario', $_GET['id_usuario']);
-        $stmt->bindValue(':id', $_GET['id']);
+        $stmt->bindValue(':id_partida', $data['id_partida']);
+        $stmt->bindValue(':id_usuario', $data['id_usuario']);
+        $stmt->bindValue(':id', $data['id']);
         $stmt->execute();
         header("HTTP/1.1 200 Ok");
         exit;
