@@ -48,9 +48,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     }
 }
 
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $data = json_decode(file_get_contents("php://input"), true);
 
+    if (isset($data['email'])) {
         // Comprobar si el correo electrónico ya existe
         $query = "SELECT * FROM usuarios WHERE email=:email";
         $stmt = $pdo->prepare($query);
@@ -63,6 +65,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             echo json_encode(array("mensaje" => "El correo electrónico ya está registrado."));
             exit();
         }
+    }
+
+    if (isset($data['id_partida']) && isset($data['id_usuario'])) {
+            $query = "SELECT * FROM partida_jugador WHERE id_partida = :id_partida AND id_usuario = :id_usuario";
+            $stmt = $pdo->prepare($query);
+            $stmt->bindValue(':id_partida', $data['id_partida']);
+            $stmt->bindValue(':id_usuario', $data['id_usuario']);
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            if ($stmt->rowCount() > 0) {
+                header("HTTP/1.1 400 Bad Request");
+                echo json_encode(array("mensaje" => "Ya estás apuntado en esta partida."));
+                exit();
+            }
+    }
+    
 
     if ($tabla == 'partidas') {
         $query = "INSERT INTO partidas (juego, fecha, hora, ubicacion, max_jugadores) VALUES(:juego, :fecha, :hora, :ubicacion, :max_jugadores)";
@@ -73,6 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->bindValue(':ubicacion', $data['ubicacion']);
         $stmt->bindValue(':max_jugadores', $data['max_jugadores']);
         $stmt->execute();
+
     } elseif ($tabla == 'usuarios') {
         $query = "INSERT INTO usuarios (nombre, direccion, email, contrasena) VALUES(:nombre, :direccion, :email, :contrasena)";
         $stmt = $pdo->prepare($query);
@@ -96,6 +115,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit;
     }
 }
+
 
 if($_SERVER['REQUEST_METHOD'] == 'PUT') {
     if($tabla == 'partidas') {

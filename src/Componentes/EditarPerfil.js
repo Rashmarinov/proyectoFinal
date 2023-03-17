@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 import axios from 'axios';
 import Cookies from 'js-cookie';
 
-const EditarPerfil = () => {
+const Perfil = () => {
   const [usuario, setUsuario] = useState(null);
 
   useEffect(() => {
@@ -43,11 +43,7 @@ const EditarPerfil = () => {
         <p>Email: {usuario.email}</p>
 
         <button className="logIn--button">
-          <a href="/editarPerfil">Editar Perfil</a>
-        </button>
-
-        <button className="logIn--button" onClick={handleLogOut}>
-          <a href="/logIn">Cerrar Sesión</a>
+          <a href="/perfil">Guardar Cambios</a>
         </button>
 
       </section>
@@ -56,4 +52,4 @@ const EditarPerfil = () => {
   );
 };
 
-export default EditarPerfil;
+export default Perfil;

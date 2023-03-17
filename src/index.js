@@ -12,6 +12,7 @@ import AñadirPartida from './Componentes/AñadirPartida';
 import MisPartidas from  './Componentes/MisPartidas';
 import Perfil from './Componentes/Perfil';
 import loginOk from './Componentes/LoginOk';
+import EditarPerfil from './Componentes/Perfil';
 
 loginOk();
 const browserRouter = createBrowserRouter([
@@ -42,6 +43,11 @@ const browserRouter = createBrowserRouter([
   {
     path:'/perfil',
     element: <Perfil></Perfil>
+  },
+  {
+    path:'/editarPerfil',
+    element: <EditarPerfil></EditarPerfil>
+
   }
 ])
 

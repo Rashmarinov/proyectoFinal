@@ -71,7 +71,7 @@ function LogIn() {
     });
   };
 if(loginOk()){  
-  // Redireccionar al usuario a la página de inicio de sesión
+  // Redireccionar al usuario al perfil del usuario
   window.location.href = "/perfil";
 } else {
 

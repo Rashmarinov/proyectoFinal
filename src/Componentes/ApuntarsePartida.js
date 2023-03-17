@@ -3,12 +3,14 @@ import { useParams } from "react-router-dom";
 import Navbar from "./Navbar";
 import axios from 'axios';
 import loginOk from "./LoginOk";
-loginOk();
+import Cookies from 'js-cookie';
+
 
 function ApuntarsePartida() {
   const [partida, setPartida] = useState({});
   const [jugadores, setJugadores] = useState([]);
   const [numJugadores, setNumJugadores] = useState(0);
+  const [mensaje, setMensaje] = useState("");
   const { id } = useParams();
 
   useEffect(() => {
@@ -22,24 +24,52 @@ function ApuntarsePartida() {
         setPartida(responsePartida.data[0]);
         setNumJugadores(responseJugadores.data.length);
 
+
+
       } catch (error) {
         console.log(error);
       }
     };
-    
 
     fetchData();
   }, [id]);
 
-  const handleApuntarse = () => {
+  const handleApuntarse = async () => {  
+  
+    if(loginOk()){  
+    
+  
+    const usuarioCookie = JSON.parse(Cookies.get('usuario'));
+    const usuarioId = usuarioCookie.id_usuarios;
+  
     if (numJugadores >= partida.max_jugadores) {
-      alert('La partida está llena. No se pueden apuntar más jugadores.');
+      setMensaje('La partida está llena. No se pueden apuntar más jugadores.');
     } else {
-      // Aquí se debería agregar la lógica para apuntarse a la partida
-      alert('Te has apuntado a la partida!');
+      try {
+    const response = await axios.post('/edib/proyectoFinal/src/php/apiRestActualizada.php?tabla=partida_jugador', {
+        id_partida: id,
+        id_usuario: usuarioId
+    });
+    console.log(response);
+    setMensaje('Te has apuntado a la partida!');
+    // window.location.href = "/apuntarsePartida/:id";
+} catch (error) {
+    console.error("Error al enviar el formulario:", error);
+    if (error.response && error.response.status === 400 && error.response.data.mensaje === "Ya estás apuntado en esta partida.") {
+        setMensaje("Ya estás apuntado en esta partida.");
+    } else {
+        setMensaje("Error al enviar el formulario.");
     }
+}
+
+    }
+  } else {
+    // Redireccionar al usuario a la página de inicio de sesión
+    window.location.href = "/logIn";
   }
 
+  }
+  
   return (
     <div className="containerApuntarse">   
       <section className="apuntarsePartida" >
@@ -48,6 +78,7 @@ function ApuntarsePartida() {
         <p className="apuntarsePartida--Info">Fecha: {partida.fecha}</p>
         <p className="apuntarsePartida--Info">Hora: {partida.hora}</p>
         <p className="apuntarsePartida--Info">Ubicación: {partida.ubicacion}</p>
+        <p className="mensaje">{mensaje}</p>
         <button className="SignIn--button" onClick={handleApuntarse}>Apuntarse</button>
       </section>
       <Navbar></Navbar>

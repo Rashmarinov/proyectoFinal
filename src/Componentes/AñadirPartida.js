@@ -1,96 +1,117 @@
 import React, { useState } from "react";
 import Navbar from "./Navbar";
 import loginOk from "./LoginOk";
+import axios from 'axios';
 
 const AñadirPartida = () => {
   
-
   const [juego, setJuego] = useState("");
-  const [jugadores, setJugadores] = useState("");
+  const [maxJugadores, setMaxJugadores] = useState(2);
   const [fecha, setFecha] = useState("");
   const [hora, setHora] = useState("");
   const [ubicacion, setUbicacion] = useState("");
+  const [mensaje, setMensaje] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Validar formulario
     if (
       juego.trim() === "" ||
-      jugadores.trim() === "" ||
       fecha.trim() === "" ||
       hora.trim() === "" ||
       ubicacion.trim() === ""
     ) {
-      // Mostrar mensaje de error o realizar alguna acción
-      return;
-    }
-
-    if (hora !== ubicacion) {
-      // Mostrar mensaje de error o realizar alguna acción
+      setMensaje("Por favor, completa todos los campos.");
       return;
     }
 
     // Enviar formulario
-    console.log("Formulario enviado");
+    try {
+      const response = await axios.post('/edib/proyectoFinal/src/php/apiRestActualizada.php?tabla=partidas', {
+        juego,
+        max_jugadores: maxJugadores,
+        fecha,
+        hora,
+        ubicacion
+      });
+      console.log(response);
+      setMensaje('Partida creada correctamente!');
+      setJuego("");
+      setMaxJugadores(2);
+      setFecha("");
+      setHora("");
+      setUbicacion("");
+    } catch (error) {
+      console.error("Error al enviar el formulario:", error);
+      setMensaje("Error al enviar el formulario.");
+    }
   };
 
   //Condición para usuarios logeados
   if(loginOk()){
 
-  return (
-    <div className="container">
-      <h1>Añade una partida</h1>
-      <section className="SignIn">
-        <form className="SignIn--form" onSubmit={handleSubmit}>
-          <input
-            className="SignIn--input"
-            placeholder="Juego"
-            type="text"
-            id="juego"
-            value={juego}
-            onChange={(e) => setJuego(e.target.value)}
-          />
-          <input
-            className="SignIn--input"
-            placeholder="Jugadores"
-            type="text"
-            id="jugadores"
-            value={jugadores}
-            onChange={(e) => setJugadores(e.target.value)}
-          />
-          <input
-            className="SignIn--input"
-            placeholder="Fecha"
-            type="date"
-            id="fecha"
-            value={fecha}
-            onChange={(e) => setFecha(e.target.value)}
-          />
-          <input
-            className="SignIn--input"
-            placeholder="Hora"
-            type="time"
-            id="hora"
-            value={hora}
-            onChange={(e) => setHora(e.target.value)}
-          />
-          <input
-            className="SignIn--input"
-            placeholder="Ubicación"
-            type="text"
-            id="ubicacion"
-            value={ubicacion}
-            onChange={(e) => setUbicacion(e.target.value)}
-          />
-          <button className="SignIn--button" type="submit">
-            Crear
-          </button>
-        </form>
-      </section>
-      <Navbar></Navbar>
-    </div>
-  );
+    return (
+      <div className="container">
+        <h1>Añade una partida</h1>
+        <section className="SignIn">
+          <form className="SignIn--form" onSubmit={handleSubmit}>
+            <input
+              className="SignIn--input"
+              placeholder="Juego"
+              type="text"
+              id="juego"
+              value={juego}
+              onChange={(e) => setJuego(e.target.value)}
+            />
+            <input
+              className="SignIn--input"
+              placeholder="Fecha"
+              type="date"
+              id="fecha"
+              value={fecha}
+              onChange={(e) => setFecha(e.target.value)}
+            />
+            <input
+              className="SignIn--input"
+              placeholder="Hora"
+              type="time"
+              id="hora"
+              value={hora}
+              onChange={(e) => setHora(e.target.value)}
+            />
+            <input
+              className="SignIn--input"
+              placeholder="Ubicación"
+              type="text"
+              id="ubicacion"
+              value={ubicacion}
+              onChange={(e) => setUbicacion(e.target.value)}
+            />
+            <select
+              className="SignIn--input"
+              id="max_jugadores"
+              value={maxJugadores}
+              onChange={(e) => setMaxJugadores(e.target.value)}
+            >
+              <option value="">Número de jugadores</option>
+              {Array.from(Array(9), (e, i) => (
+                <option key={i} value={i + 2}>
+                  {i + 2}
+                </option>
+              ))}
+            </select>
+            {mensaje && <p className="mensaje">{mensaje}</p>}
+            <button className="SignIn--button" type="submit">
+              Crear
+            </button>
+          </form>
+          
+        </section>
+        <Navbar />
+      </div>
+    );
+    
 
   } else {
     // Redireccionar al usuario a la página de inicio de sesión
