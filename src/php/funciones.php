@@ -24,41 +24,13 @@ class Conexion extends PDO
 		}
 	}
 
-
-// 	function obtenerPartidaId($id)
-// {
-//     $bd = obtenerConexion();
-//     $sentencia = $bd->prepare("SELECT id_partida, juego, jugadores, fecha, hora, ubicacion FROM partidas WHERE id_partida = ?");
-//     $sentencia->execute([$id]);
-//     return $sentencia->fetchObject();
-// }
-
-// // Función para obtener todas las partidas
-// function obtenerPartidas() {
-// 	global $pdo;
-// 	$stmt = $pdo->query("SELECT * FROM partidas");
-// 	return $stmt->fetchAll(PDO::FETCH_ASSOC);
-// }
-
-// function registrarPartida(){}
-
-// function modificarPartida(){}
-
-// function eliminarPartida(){}
-
-// function apuntarsePartida(){}
-
-// function crearPartida(){}
-
-// function obtenerPartidaJuego($juego){}
-
-// function abandonarPartida(){}
-
-
-
-// function registrarUsuario(){}
-
-// function obtenerUsuario(){}
-
-
+	function partidasPorId($pdo, $ids) {
+		$placeholders = rtrim(str_repeat('?,', count($ids)), ',');
+		$query = "SELECT * FROM partidas WHERE id_partida IN ($placeholders)";
+		$stmt = $pdo->prepare($query);
+		$stmt->execute($ids);
+		$stmt->setFetchMode(PDO::FETCH_ASSOC);
+		return $stmt->fetchAll();
+	}
+	
 ?>

@@ -2,14 +2,14 @@ import React, { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import axios from 'axios';
 import { Link } from "react-router-dom"; // importar el componente Link
-import loginOk from "./LoginOk";
+
 
 
 function Juegos() {
   const [data, setData] = useState([]);
   const [jugadores, setJugadores] = useState({});
 
-  const baseUrl="http://localhost:80/edib/proyectoFinal/src/php/apiRestActualizada.php?tabla=partidas";
+  const baseUrl="/edib/proyectoFinal/src/php/apiRestActualizada.php?tabla=partidas";
 
   const peticionGet=async()=>{
     await axios.get(baseUrl)

@@ -49,6 +49,7 @@ const Registrar = () => {
       } else {
         setErrores({ formulario: "Error al enviar el formulario." });
       }
+
     });
   };
 

@@ -20,16 +20,12 @@ const Navbar = () => (
 
     <div class="navButons">
       <input class="inputDesplegable" type="checkbox" id="boton"></input>
-      <img src="/img/svg/botonDesplegable.svg" alt="" />
+      
 
-      <ul class="desplegable">
-        <li>Buscar</li>
-        <li>
-          <a class="inicio" href="/privacidad">
-            Privacidad
-          </a>
-        </li>
-      </ul>
+      <a href="/misPartidas">
+          <img src="/img/svg/botonDesplegable.svg" alt="" />
+      </a>
+      
     </div>
   </div>
 );

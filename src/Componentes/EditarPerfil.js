@@ -119,7 +119,6 @@ const EditarPerfil = () => {
         {errores.nombre && (
         <span className="SignIn--error">{errores.nombre}</span>
         )}
-
         {/* Input Direccion */}
         <input
         className={`SignIn--input ${
@@ -135,7 +134,6 @@ const EditarPerfil = () => {
         {errores.direccion && (
         <span className="SignIn--error">{errores.direccion}</span>
         )}
-
         {/* Input Email */}
         <input
         className={`SignIn--input ${

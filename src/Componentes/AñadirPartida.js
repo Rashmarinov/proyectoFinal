@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Navbar from "./Navbar";
 import loginOk from "./LoginOk";
 import axios from 'axios';
+import Cookies from "js-cookie";
 
 const AñadirPartida = () => {
   
@@ -35,7 +36,19 @@ const AñadirPartida = () => {
         hora,
         ubicacion
       });
-      console.log(response);
+
+      const id_Partida = response.data;
+      const id_Usuario = JSON.parse(Cookies.get('usuario')).id_usuarios;
+
+      console.log(id_Partida);
+      console.log(id_Usuario);
+      
+      //await axios.post('/edib/proyectoFinal/src/php/apiRestActualizada.php?tabla=partida_jugador',
+      axios.post('/edib/proyectoFinal/src/php/apiRestActualizada.php?tabla=partida_jugador', {
+        id_partida: id_Partida,
+        id_usuario: id_Usuario
+      });
+      
       setMensaje('Partida creada correctamente!');
       setJuego("");
       setMaxJugadores(2);
@@ -47,7 +60,7 @@ const AñadirPartida = () => {
       setMensaje("Error al enviar el formulario.");
     }
   };
-
+  
   //Condición para usuarios logeados
   if(loginOk()){
 
@@ -103,7 +116,7 @@ const AñadirPartida = () => {
             </select>
             {mensaje && <p className="mensaje">{mensaje}</p>}
             <button className="SignIn--button" type="submit">
-              Crear
+              Crear Partida
             </button>
           </form>
           

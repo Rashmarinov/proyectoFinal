@@ -28,9 +28,12 @@ const Perfil = () => {
     // Eliminar la cookie "user_session"
     Cookies.remove("user_session");
     Cookies.remove("usuario");
+
+    // Cerrar la sesión en PHP
+    axios.get("edib/proyectoFinal/src/php/cerrarSesion.php");
   
     // Redirigir al usuario a la página de inicio de sesión
-    window.location.href = "/login";
+    window.location.href = "/";
   };
   
 
