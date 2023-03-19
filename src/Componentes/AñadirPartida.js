@@ -44,7 +44,7 @@ const AñadirPartida = () => {
       console.log(id_Usuario);
       
       //await axios.post('/edib/proyectoFinal/src/php/apiRestActualizada.php?tabla=partida_jugador',
-      axios.post('/edib/proyectoFinal/src/php/apiRestActualizada.php?tabla=partida_jugador', {
+       await axios.post('/edib/proyectoFinal/src/php/apiRestActualizada.php?tabla=partida_jugador', {
         id_partida: id_Partida,
         id_usuario: id_Usuario
       });

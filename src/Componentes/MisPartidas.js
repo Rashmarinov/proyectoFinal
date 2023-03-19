@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import Navbar from './Navbar';
 
 function MisPartidas() {
   const [idPartidas, setIdPartidas] = useState([]);
@@ -67,8 +68,8 @@ function MisPartidas() {
 
 
   return (
-    <div>
-      <h2>Mis partidas</h2>
+    <div className='container'>
+      <h1>Mis partidas</h1>
       <ul>
         {partidas && partidas.length > 0 ? (
           partidas.map(partida => (
@@ -89,28 +90,11 @@ function MisPartidas() {
           <p>No se encontraron partidas</p>
         )}
       </ul>
+      <Navbar></Navbar>
     </div>
+
   );
 }
 
 export default MisPartidas;
 
-// return (
-//   <div className="container">
-    
-//     {data.map((partida) => (
-// <section  className="partidas" key={partida.id_partida}>
-//   <div className="partidas-juego">Juego: {partida.juego}</div>
-//   <div className="partidas-jugadores">Jugadores: {jugadores[partida.id_partidas] || 0}</div>
-//   <div className="partidas-fecha">Fecha: {partida.fecha}</div>
-//   <div className="partidas-hora">Hora: {partida.hora}</div>
-//   <div className="partidas-ubicacion">Ubicación: {partida.ubicacion}</div>
-//   <Link to={`/apuntarsePartida/${juego.id_partidas}`}>
-//     <button>Ver partida</button>
-//   </Link>
-// </section>
-// ))}
-
-//     <Navbar></Navbar>
-//   </div>
-// );

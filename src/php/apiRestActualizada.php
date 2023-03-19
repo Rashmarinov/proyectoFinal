@@ -200,6 +200,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->bindValue(':id_partida', $data['id_partida']);
         $stmt->bindValue(':id_usuario', $data['id_usuario']);
         $stmt->execute();
+        header("HTTP/1.1 200 Ok");
+        exit;
     }
     $idPost = $pdo->lastInsertId();
     if($idPost) {

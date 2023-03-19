@@ -51,8 +51,9 @@ function ApuntarsePartida() {
         id_usuario: usuarioId
     });
     console.log(response);
+    //Refrescamos la página
+    window.location.reload(); 
     setMensaje('Te has apuntado a la partida!');
-    // window.location.href = "/apuntarsePartida/:id";
 } catch (error) {
     console.error("Error al enviar el formulario:", error);
     if (error.response && error.response.status === 400 && error.response.data.mensaje === "Ya estás apuntado en esta partida.") {
