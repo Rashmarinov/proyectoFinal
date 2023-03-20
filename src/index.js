@@ -13,6 +13,7 @@ import MisPartidas from  './Componentes/MisPartidas';
 import Perfil from './Componentes/Perfil';
 import loginOk from './Componentes/LoginOk';
 import EditarPerfil from './Componentes/EditarPerfil';
+import EditarPartida from './Componentes/EditarPartida';
 
 loginOk();
 const browserRouter = createBrowserRouter([
@@ -48,6 +49,10 @@ const browserRouter = createBrowserRouter([
     path:'/editarPerfil',
     element: <EditarPerfil></EditarPerfil>
   },
+  {
+    path:'/EditarPartida/:id',
+    element: <EditarPartida></EditarPartida>
+  }
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

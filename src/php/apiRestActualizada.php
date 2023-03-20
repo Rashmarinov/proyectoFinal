@@ -135,13 +135,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     //Códido para insertar una partida nueva en la tabla partidas
     if ($tabla == 'partidas') {
-        $query = "INSERT INTO partidas (juego, fecha, hora, ubicacion, max_jugadores) VALUES(:juego, :fecha, :hora, :ubicacion, :max_jugadores)";
+        $query = "INSERT INTO partidas (juego, fecha, hora, ubicacion, max_jugadores, id_creador) VALUES(:juego, :fecha, :hora, :ubicacion, :max_jugadores, :id_creador)";
         $stmt = $pdo->prepare($query);
         $stmt->bindValue(':juego', $data['juego']);
         $stmt->bindValue(':fecha', $data['fecha']);
         $stmt->bindValue(':hora', $data['hora']);
         $stmt->bindValue(':ubicacion', $data['ubicacion']);
         $stmt->bindValue(':max_jugadores', $data['max_jugadores']);
+        $stmt->bindValue(':id_creador', $_SESSION['usuario']['id_usuarios']); // se asigna el id_creador
         $stmt->execute();
         // $idPartida = $pdo->lastInsertId();
         // //echo json_encode(intval($idPartida));
@@ -258,9 +259,14 @@ if($_SERVER['REQUEST_METHOD'] == 'PUT') {
 
 if($_SERVER['REQUEST_METHOD'] == 'DELETE'){
     if($tabla == 'partidas') {
-        $query = "DELETE FROM partidas WHERE id_partidas=:id";
+        // $query = "DELETE FROM partidas WHERE id_partidas=:id";
+        // $stmt = $pdo->prepare($query);
+        // $stmt->bindValue(':id', $_GET['id']);
+        // $stmt->execute();
+        $query = "DELETE FROM partidas WHERE id_partidas=:id AND id_creador=:id_creador";
         $stmt = $pdo->prepare($query);
         $stmt->bindValue(':id', $_GET['id']);
+        $stmt->bindValue(':id_creador', $_SESSION['usuario']['id_usuarios']); // se comprueba el id_creador
         $stmt->execute();
         header("HTTP/1.1 200 Ok");
         exit;

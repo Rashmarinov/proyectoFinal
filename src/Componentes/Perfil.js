@@ -40,10 +40,10 @@ const Perfil = () => {
   return (
     <div className="container">
       <h1>Perfil de {usuario.nombre}</h1>
-      <section className="perfil">
-        <p>Nombre: {usuario.nombre}</p>
-        <p>Dirección: {usuario.direccion}</p>
-        <p>Email: {usuario.email}</p>
+      <section className="apuntarsePartida">
+        <p className="apuntarsePartida--Info">Nombre: {usuario.nombre}</p>
+        <p className="apuntarsePartida--Info">Dirección: {usuario.direccion}</p>
+        <p className="apuntarsePartida--Info">Email: {usuario.email}</p>
 
         <button className="logIn--button">
           <a href="/editarPerfil">Editar Perfil</a>

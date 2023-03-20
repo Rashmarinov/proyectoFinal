@@ -1,20 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import loginOk from "./LoginOk";
 import axios from 'axios';
-import Cookies from "js-cookie";
+import { useParams } from "react-router-dom";
 
-const AñadirPartida = () => {
+const EditarPartida = () => {
   
   const [juego, setJuego] = useState("");
-  const [maxJugadores, setMaxJugadores] = useState(2);
+  const [max_jugadores, setMax_jugadores] = useState(2);
   const [fecha, setFecha] = useState("");
   const [hora, setHora] = useState("");
   const [ubicacion, setUbicacion] = useState("");
   const [mensaje, setMensaje] = useState("");
+  const { id } = useParams();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  useEffect(() => {
+
+    // Obtener los datos completos del usuario desde la base de datos
+    axios.get(`/edib/proyectoFinal/src/php/apiRestActualizada.php?tabla=partidas&id=${id}`)
+      .then((response) => {
+        setJuego(response.data[0].juego);
+        setFecha(response.data[0].fecha);
+        setHora(response.data[0].hora);
+        setUbicacion(response.data[0].ubicacion);
+        setMax_jugadores(response.data[0].max_jugadores);
+        console.log(response);
+      })
+      .catch((error) => {
+        console.error("Error al obtener los datos de la partida:", error);
+      });
+  }, []);
+
+  
+  const handleSubmit = (event) => {
+    event.preventDefault();
 
     // Validar formulario
     if (
@@ -29,32 +48,18 @@ const AñadirPartida = () => {
 
     // Enviar formulario
     try {
-      const response = await axios.post('/edib/proyectoFinal/src/php/apiRestActualizada.php?tabla=partidas', {
+      const respuesta = axios.put('/edib/proyectoFinal/src/php/apiRestActualizada.php?tabla=partidas', {
+        id: id,
         juego,
-        max_jugadores: maxJugadores,
+        max_jugadores: max_jugadores,
         fecha,
         hora,
         ubicacion
       });
-
-      const id_Partida = response.data;
-      const id_Usuario = JSON.parse(Cookies.get('usuario')).id_usuarios;
-
-      console.log(id_Partida);
-      console.log(id_Usuario);
       
-
-      await axios.post('/edib/proyectoFinal/src/php/apiRestActualizada.php?tabla=partida_jugador', {
-        id_partida: id_Partida,
-        id_usuario: id_Usuario
-      });
-      
-      setMensaje('Partida creada correctamente!');
-      setJuego("");
-      setMaxJugadores(2);
-      setFecha("");
-      setHora("");
-      setUbicacion("");
+      console.log(respuesta);
+      setMensaje('Partida modificada correctamente!');
+      window.location.href = `/apuntarsePartida/${id}`;
     } catch (error) {
       console.error("Error al enviar el formulario:", error);
       setMensaje("Error al enviar el formulario.");
@@ -66,7 +71,7 @@ const AñadirPartida = () => {
 
     return (
       <div className="container">
-        <h1>Añade una partida</h1>
+        <h1>Editar Partida</h1>
         <section className="SignIn">
           <form className="SignIn--form" onSubmit={handleSubmit}>
             <input
@@ -104,8 +109,8 @@ const AñadirPartida = () => {
             <select
               className="SignIn--input"
               id="max_jugadores"
-              value={maxJugadores}
-              onChange={(e) => setMaxJugadores(e.target.value)}
+              value={max_jugadores}
+              onChange={(e) => setMax_jugadores(e.target.value)}
             >
               <option value="">Número de jugadores</option>
               {Array.from(Array(9), (e, i) => (
@@ -116,7 +121,7 @@ const AñadirPartida = () => {
             </select>
             {mensaje && <p className="mensaje">{mensaje}</p>}
             <button className="SignIn--button" type="submit">
-              Crear Partida
+              Guardar Cambios
             </button>
           </form>
           
@@ -132,7 +137,4 @@ const AñadirPartida = () => {
   }
 };
 
-export default AñadirPartida;
-
-
-
+export default EditarPartida;

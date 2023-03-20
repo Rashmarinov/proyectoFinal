@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
+import loginOk from './LoginOk';
 
 function MisPartidas() {
   const [idPartidas, setIdPartidas] = useState([]);
@@ -66,7 +67,8 @@ function MisPartidas() {
     }
   }, [idPartidas]);
 
-
+if(loginOk()){  
+  
   return (
     <div className='container'>
       <h1>Mis partidas</h1>
@@ -94,7 +96,11 @@ function MisPartidas() {
     </div>
 
   );
+
+  } else {
+    // Redireccionar al usuario a la página de inicio de sesión
+    window.location.href = "/logIn";
+  }
 }
 
 export default MisPartidas;
-

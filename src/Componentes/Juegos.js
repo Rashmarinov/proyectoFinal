@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import Navbar from "./Navbar";
+import NavbarSticky from "./NavbarSticky";
 import axios from 'axios';
-import { Link } from "react-router-dom"; // importar el componente Link
+import { Link } from "react-router-dom"; 
 
 
 
@@ -70,7 +70,7 @@ function Juegos() {
   </section>
 ))}
 
-      <Navbar></Navbar>
+      <NavbarSticky></NavbarSticky>
     </div>
   );
 }
