@@ -67,8 +67,9 @@ function LogIn() {
     })
     .catch((error) => {
       console.error("Error al enviar la solicitud:", error);
-      // Aquí puedes mostrar un mensaje de error al usuario, si es que hubo un problema al iniciar sesión
+      setErrorMessage("Ocurrió un error al iniciar sesión. Por favor, inténtelo de nuevo.");
     });
+    
   };
 if(loginOk()){  
   // Redireccionar al usuario al perfil del usuario

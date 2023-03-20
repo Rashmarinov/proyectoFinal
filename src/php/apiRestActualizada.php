@@ -152,10 +152,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } elseif ($tabla == 'usuarios') {
 
         // Validar nombre
-        $nombreRegex = '/^[a-zA-Z]+\s[a-zA-Z]+$/';
+        
         // Ejemplo error solo acepta números
-        // $nombreRegex = '/^\d+$/';
-
+        $nombreRegex = '/^\d+$/';
+        // $nombreRegex = '/^[a-zA-Z]+\s[a-zA-Z]+$/';
         if (!preg_match($nombreRegex, $data['nombre'])) {
             header("HTTP/1.1 400 Bad Request");
             echo json_encode(array("mensaje" => "Nombre inválido"));

@@ -93,7 +93,7 @@ function ApuntarsePartida() {
   console.log(response);
   //Refrescamos la página
   window.location.reload(); 
-  setMensaje('Te has apuntado a la partida!');
+  // setMensaje('Te has apuntado a la partida!');
 } catch (error) {
   console.error("Error al enviar el formulario:", error);
   if (error.response && error.response.status === 400 && error.response.data.mensaje === "Ya estás apuntado en esta partida.") {
@@ -121,7 +121,7 @@ const renderBotones = () => {
     );
   } else if (jugadorRegistrado) {
     return (
-      <button className="SignIn--button" onClick={handleAbandonar}>Abandonar partida</button>
+      <button className="SignIn--button" onClick={handleAbandonar}>Abandonar </button>
     );
   } else {
     return (
