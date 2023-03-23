@@ -102,7 +102,7 @@ if(loginOk()){
           {errorMessage && <div className="error">{errorMessage}</div>}
           <button className="logIn--button" type="submit">Iniciar sesión</button>
         </form>
-        <button className="logIn--button">
+        <button  className="logIn--button">
             <a href="/Registrar">Crear cuenta</a>
           </button>
       </section>
