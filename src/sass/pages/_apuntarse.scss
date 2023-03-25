@@ -13,3 +13,12 @@
     height: 40px;
     margin: 12px;
 }
+
+.perfil{
+    background-color: $color_fondo;
+    height: 420px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

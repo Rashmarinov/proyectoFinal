@@ -14,6 +14,7 @@ import Perfil from './Componentes/Perfil';
 import loginOk from './Componentes/LoginOk';
 import EditarPerfil from './Componentes/EditarPerfil';
 import EditarPartida from './Componentes/EditarPartida';
+import Footer from './Componentes/Footer';
 
 loginOk();
 const browserRouter = createBrowserRouter([
@@ -60,7 +61,9 @@ root.render(
   <React.StrictMode>
       <HeaderMovil></HeaderMovil>
       <RouterProvider router={browserRouter} />
+      <Footer></Footer>
   </React.StrictMode>
+  
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -99,8 +99,8 @@ const EditarPerfil = () => {
 
   return (
     <div className="container">
-      <h1>Editar Perfil de {usuario.nombre}</h1>
-      <section className="perfil">
+      <h4 className="pagina__titulo">Editar Perfil</h4>
+      <section className="logIn">
       <form className="SignIn--form" onSubmit={handleSubmit}>
 
         {/* Input Nombre */}

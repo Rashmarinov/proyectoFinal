@@ -71,18 +71,18 @@ if(loginOk()){
   
   return (
     <div className='container'>
-      <h1>Mis partidas</h1>
+      <h4 className='pagina__titulo'>Mis partidas</h4>
       <ul>
         {partidas && partidas.length > 0 ? (
           partidas.map(partida => (
-            <section  className="partidas" key={partida.id_partida}>
+    <section  className="partidas" key={partida.id_partida}>
   <div className="partidas-juego">Juego: {partida.juego}</div>
   <div className="partidas-jugadores">Jugadores: {jugadores[partida.id_partidas] || 0}</div>
   <div className="partidas-fecha">Fecha: {partida.fecha}</div>
   <div className="partidas-hora">Hora: {partida.hora}</div>
   <div className="partidas-ubicacion">Ubicación: {partida.ubicacion}</div>
   <Link to={`/apuntarsePartida/${partida.id_partidas}`}>
-    <button>Ver partida</button>
+    <button className='misPartidas-boton'>Ver partida</button>
   </Link>
 </section>
 

@@ -37,11 +37,19 @@
     justify-content: center;
 }
 
+.navButons__span{
+    display: none;
+}
+
 .logo{
     background-color: $color_azulOscuro;
     height: 66px;
     text-align: center;
     margin-bottom: 10px;
+}
+
+.logoAzul_Nav{
+    display: none;
 }
 
 .imagenBanner {
@@ -55,6 +63,7 @@
 
 .container{
     text-align: center;
+    
 }
 
 #root{
@@ -63,3 +72,33 @@
 }
 
 
+@media only screen and (min-width:1000px){
+    .navButons, .logo{
+        display: none;
+    }
+    .navlistSticky, .navlist{
+        position: fixed;
+        top: 0;
+        justify-content: space-around;
+        height: 80px;
+    }
+    .navButons__span{
+        display: block;
+        color: black;
+    }
+
+    .container{
+        padding-top: 80px;
+        background-color: $color_fondo;
+
+    }
+
+    .logoAzul_Nav{
+        display: block;
+    }
+
+    .textoBanner {
+        margin: 20px;
+    }
+
+}

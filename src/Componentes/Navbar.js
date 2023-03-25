@@ -1,32 +1,37 @@
 const Navbar = () => (
   <div class="navlist">
-    <div class="navButons">
-      <a href="/">
-        <img src="/img/svg/botonInicio.svg" alt="" />
-      </a>
-    </div>
+    <img className="logoAzul_Nav" src="/img/svg/logoAzulDesktop.svg" alt="logoAzul" />
+    <a href="/">
+      <div class="navButons">
+        <img className="navButons__img" src="/img/svg/botonInicio.svg" alt="" />
+      </div>
+      <span className="navButons__span">Inicio</span>
+    </a>
 
-    <div class="navButons">
-      <a href="/añadirPartida">
-        <img src="/img/svg/botonMesa.svg" alt="" />
-      </a>
-    </div>
+    <a href="/añadirPartida">
+      <div class="navButons">
+        <img className="navButons__img" src="/img/svg/botonMesa.svg" alt="" />
+      </div>
+      <span className="navButons__span">Añadir Partida</span>
+    </a>
 
-    <div class="navButons">
-      <a href="/logIn">
-        <img src="/img/svg/botonPerfil.svg" alt="" />
-      </a>
-    </div>
+    <a href="/logIn">
+      <div class="navButons">
+        <img className="navButons__img" src="/img/svg/botonPerfil.svg" alt="" />
+      </div>
+      <span className="navButons__span">Perfil</span>
+    </a>
 
-    <div class="navButons">
-      <input class="inputDesplegable" type="checkbox" id="boton"></input>
-      
-
-      <a href="/misPartidas">
-          <img src="/img/svg/botonDesplegable.svg" alt="" />
-      </a>
-      
-    </div>
+    <a href="/misPartidas">
+      <div class="navButons">
+        <img
+          className="navButons__img"
+          src="/img/svg/botonDesplegable.svg"
+          alt=""
+        />
+      </div>
+      <span className="navButons__span">Mis Partidas</span>
+    </a>
   </div>
 );
 

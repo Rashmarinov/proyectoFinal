@@ -2,3 +2,9 @@
 /* @TYPOGRAPHY */
 /* ********* */
 
+$fontTitulo: 2rem;
+
+.pagina__titulo{
+    font-size: $fontTitulo;
+    margin: 10px;
+}

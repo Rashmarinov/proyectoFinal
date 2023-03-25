@@ -92,7 +92,7 @@ const Registrar = () => {
   };
   return (
     <div className="container">
-      <h1>Registrate</h1>
+      <h4 className="pagina__titulo">Registrate</h4>
       <section className="SignIn">
         <form className="SignIn--form" onSubmit={handleSubmit}>
 

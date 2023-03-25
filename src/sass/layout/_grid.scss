@@ -6,6 +6,7 @@
     background-color: $color_fondo;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 40px;
     text-align: left;
     padding-left: 10px;
     padding-top: 10px;
@@ -34,6 +35,9 @@
 .partidas-ubicacion{
     grid-column: 1 / 2;
     grid-row: 3 / 3;
+}
+.padding{
+    padding-left: 10px;
 }
 
 /***************/
@@ -73,4 +77,41 @@
 .misPartidas-ubicacion{
     grid-column: 1 / 2;
     grid-row: 3 / 3;
+}
+
+
+
+@media only screen and (min-width:1000px){
+.partidas, .misPartidas{
+    height: 60px;
+    grid-template-columns: repeat(6, 1fr);
+    align-items: center;
+    padding-top: 0px;
+
+}
+
+.partidas-juegos, .misPartidas-juegos{
+    grid-column: 5 / 6;
+    grid-row: 1 / 1;
+}
+
+.partidas-jugadores, .misPartidas-jugadores{
+    grid-column: 2 / 6;
+    grid-row: 1 / 1;
+}
+
+.partidas-fecha, .misPartidas-fecha{
+    grid-column: 3 / 6;
+    grid-row: 1 / 1;
+}
+
+.partidas-hora, .misPartidas-hora{
+    grid-column: 4 / 6;
+    grid-row: 1 / 1;
+}
+
+.partidas-ubicacion, .misPartidas-ubicacion{
+    grid-column: 5 / 6;
+    grid-row: 1 / 1;
+}
 }

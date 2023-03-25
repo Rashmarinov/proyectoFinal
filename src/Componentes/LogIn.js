@@ -78,7 +78,7 @@ if(loginOk()){
 
   return (
     <div className="container">
-      <h1>Iniciar sesión</h1>
+      <h4 className="pagina__titulo">Iniciar sesión</h4>
       <section className="logIn">
         <form className="logIn--form" onSubmit={handleSubmit}>
           <input
@@ -101,10 +101,10 @@ if(loginOk()){
           {passwordError && <div className="error">{passwordError}</div>}
           {errorMessage && <div className="error">{errorMessage}</div>}
           <button className="logIn--button" type="submit">Iniciar sesión</button>
-        </form>
-        <button  className="logIn--button">
-            <a href="/Registrar">Crear cuenta</a>
+          <button  className="logIn--button">
+              <a href="/Registrar">Crear cuenta</a>
           </button>
+        </form>
       </section>
       <Navbar />
     </div>

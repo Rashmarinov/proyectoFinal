@@ -39,8 +39,8 @@ const Perfil = () => {
 
   return (
     <div className="container">
-      <h1>Perfil de {usuario.nombre}</h1>
-      <section className="apuntarsePartida">
+      <h4 className="pagina__titulo">Mi Perfil</h4>
+      <section className="perfil">
         <p className="apuntarsePartida--Info">Nombre: {usuario.nombre}</p>
         <p className="apuntarsePartida--Info">Dirección: {usuario.direccion}</p>
         <p className="apuntarsePartida--Info">Email: {usuario.email}</p>

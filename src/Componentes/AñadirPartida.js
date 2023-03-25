@@ -66,7 +66,7 @@ const AñadirPartida = () => {
 
     return (
       <div className="container">
-        <h1>Añade una partida</h1>
+        <h4 className="pagina__titulo">Añade una partida</h4>
         <section className="SignIn">
           <form className="SignIn--form" onSubmit={handleSubmit}>
             <input

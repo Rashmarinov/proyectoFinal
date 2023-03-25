@@ -52,9 +52,20 @@ function Juegos() {
             /img/smartphone/Banner.webp 1x,
             /img/smartphone/Banner@2x.webp 2x,
             /img/smartphone/Banner@3x.webp 3x"
-        />
+            media="(min-width:320px) and (orientation:portrait)"/>
+
+          <source srcset="
+            /img/desktop/Banner.webp 1x,
+            /img/desktop/Banner@2x.webp 2x"
+            media="(min-width:1000px)"/>
+
+
+
         <img className="imagenBanner" src="" alt="Imagen tablero" />
       </picture>
+
+
+
       <h4 className="textoBanner">Lorem ipsum dolor sit amet consectetur Amet nibh egestas </h4>
       
       {data.map((juego) => (
@@ -65,7 +76,7 @@ function Juegos() {
     <div className="partidas-hora">Hora: {juego.hora}</div>
     <div className="partidas-ubicacion">Ubicación: {juego.ubicacion}</div>
     <Link to={`/apuntarsePartida/${juego.id_partidas}`}>
-      <button>Ver partida</button>
+      <button className="misPartidas-boton">Ver partida</button>
     </Link>
   </section>
 ))}

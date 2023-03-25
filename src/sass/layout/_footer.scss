@@ -2,3 +2,42 @@
 /* @FOOTER */
 /* ********* */
 
+.footer{
+    display: none;
+    background-color: $color_grisClaro;
+    width: 100vw;
+}
+.footerSimple{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 40px;
+    gap: 20px;
+}
+.footerSimple__svg{
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.footerSimple__links{
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    gap: 3.125rem;
+    margin-bottom: 25px;
+    text-decoration: underline;
+}
+
+hr {
+    height: 1px;
+    width: 30vw;
+    background-color: black;
+}
+
+@media only screen and (min-width:1000px){
+    .footer{
+        display: block;
+    }
+}
