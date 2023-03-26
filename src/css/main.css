@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* ********* */
 /* @NORMALIZE */
 /* ********* */
@@ -795,7 +796,7 @@ a {
   background-color: #12181F;
 }
 
-.imagenFormulario {
+.imagenFormulario, .imagenAñadirPartida {
   display: none;
 }
 
@@ -808,7 +809,7 @@ a {
 }
 
 @media only screen and (min-width: 1000px) {
-  .imagenFormulario {
+  .imagenFormulario, .imagenAñadirPartida {
     display: block;
   }
   .pagina__titulo__desktop {

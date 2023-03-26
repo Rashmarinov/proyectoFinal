@@ -52,7 +52,7 @@ a{
     color: $color_fondo;
     background-color: $color_azulOscuro;
 }
-.imagenFormulario{
+.imagenFormulario, .imagenAñadirPartida{
     display: none;
 }
 .pagina__titulo__desktop{
@@ -64,7 +64,7 @@ a{
 }
 
 @media only screen and (min-width:1000px){
-    .imagenFormulario{
+    .imagenFormulario, .imagenAñadirPartida{
         display: block;
     }
 
