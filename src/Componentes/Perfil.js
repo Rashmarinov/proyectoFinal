@@ -38,9 +38,18 @@ const Perfil = () => {
   
 
   return (
-    <div className="container">
+    <div className="container__Form separar">
       <h4 className="pagina__titulo">Mi Perfil</h4>
+      <picture className="imagen">
+        <source srcset="
+          /img/desktop/ImagenProfile.webp 1x,
+          /img/desktop/ImagenProfile@2x.webp 2x"
+          media="(min-width:1000px)"/>
+
+      <img className="imagenPerfil" src="" alt="Imagen perfil" />
+    </picture>
       <section className="perfil">
+      <h4 className="pagina__titulo__desktop">Mi Perfil</h4>
         <p className="apuntarsePartida--Info">Nombre: {usuario.nombre}</p>
         <p className="apuntarsePartida--Info">Dirección: {usuario.direccion}</p>
         <p className="apuntarsePartida--Info">Email: {usuario.email}</p>

@@ -1,3 +1,7 @@
+.imagenPerfil{
+    display: none;
+}
+
 .apuntarsePartida{
     background-color: $color_fondo;
     height: 420px;
@@ -6,6 +10,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: left;
 }
 
 .apuntarsePartida--Info{
@@ -22,3 +27,45 @@
     justify-content: center;
     align-items: center;
 }
+
+
+@media only screen and (min-width:1000px){
+
+    .container__Form{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 80px;
+        margin: 40px;
+        background-color: $color_grisClaro;
+    }
+    .apuntarsePartida{
+        width: 607px;
+        height: 607px;
+        margin-top: 0px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        
+    }
+    .apuntarsePartida--Info{
+        width: 65%;
+    }
+    
+    .perfil{
+        width: 607px;
+        height: 607px;
+    }
+
+    .imagenPerfil{
+        display: block;
+    }
+    .imagenPerfil{
+        width: 400px;
+        border-radius: 50%;
+        object-fit: contain;
+    }
+    .separar{
+        justify-content: space-around;
+    }
+    }

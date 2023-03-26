@@ -98,9 +98,18 @@ const EditarPerfil = () => {
   };
 
   return (
-    <div className="container">
-      <h4 className="pagina__titulo">Editar Perfil</h4>
+    <div className="container__Form separar">
+      <h4 className="pagina__titulo">Mi Perfil</h4>
+      <picture className="imagen">
+        <source srcset="
+          /img/desktop/ImagenProfile.webp 1x,
+          /img/desktop/ImagenProfile@2x.webp 2x"
+          media="(min-width:1000px)"/>
+
+      <img className="imagenPerfil" src="" alt="Imagen perfil" />
+    </picture>
       <section className="logIn">
+      <h4 className="pagina__titulo__desktop">Editar Perfil </h4>
       <form className="SignIn--form" onSubmit={handleSubmit}>
 
         {/* Input Nombre */}

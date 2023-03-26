@@ -130,10 +130,17 @@ const renderBotones = () => {
   }
 };
 
-
-            
             return (
-            <div className="containerApuntarse">
+            <div className="container__Form">
+
+            <picture className="imagen">
+            <source srcset="
+              /img/desktop/ImagenFormulario.webp 1x,
+              /img/desktop/ImagenFormulario@2x.webp 2x"
+              media="(min-width:1000px)"/>
+
+            <img className="imagenFormulario" src="" alt="Imagen fichas" />
+          </picture>
             <section className="apuntarsePartida">
             <p className="apuntarsePartida--Info">Juego: {partida.juego}</p>
             <p className="apuntarsePartida--Info">Jugadores [{numJugadores}/{partida.max_jugadores}]: {jugadores.join(', ')}</p>

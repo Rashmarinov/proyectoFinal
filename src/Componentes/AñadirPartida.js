@@ -65,9 +65,18 @@ const AñadirPartida = () => {
   if(loginOk()){
 
     return (
-      <div className="container">
+      <div className="container__Form">
+        <picture className="imagen">
+          <source srcset="
+            /img/desktop/ImagenAnadirPartida.webp 1x,
+            /img/desktop/ImagenAnadirPartida@2x.webp 2x"
+            media="(min-width:1000px)"/>
+            
+        <img className="imagenAñadirPartida" src="" alt="Imagen fichas" />
+      </picture>
         <h4 className="pagina__titulo">Añade una partida</h4>
-        <section className="SignIn">
+        <section className="logIn">
+        <h4 className="pagina__titulo__desktop">Añade una partida</h4>
           <form className="SignIn--form" onSubmit={handleSubmit}>
             <input
               className="SignIn--input"

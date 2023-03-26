@@ -77,9 +77,18 @@ if(loginOk()){
 } else {
 
   return (
-    <div className="container">
+    <div className="container__Form">
       <h4 className="pagina__titulo">Iniciar sesión</h4>
+      <picture className="imagen">
+          <source srcset="
+            /img/desktop/ImagenFormulario2.webp 1x,
+            /img/desktop/ImagenFormulario2@2x.webp 2x"
+            media="(min-width:1000px)"/>
+
+        <img className="imagenFormulario" src="" alt="Imagen fichas" />
+      </picture>
       <section className="logIn">
+      <h4 className="pagina__titulo__desktop">Iniciar sesión</h4>
         <form className="logIn--form" onSubmit={handleSubmit}>
           <input
             className="logIn--input"

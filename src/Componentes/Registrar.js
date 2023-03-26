@@ -91,9 +91,18 @@ const Registrar = () => {
     return erroresValidacion;
   };
   return (
-    <div className="container">
-      <h4 className="pagina__titulo">Registrate</h4>
-      <section className="SignIn">
+    <div className="container__Form ">
+    <h4 className="pagina__titulo">Registrarte</h4>
+    <picture className="imagen">
+        <source srcset="
+          /img/desktop/ImagenFormulario.webp 1x,
+          /img/desktop/ImagenFormulario@2x.webp 2x"
+          media="(min-width:1000px)"/>
+
+      <img className="imagenFormulario" src="" alt="Imagen fichas" />
+    </picture>
+      <section className="logIn">
+      <h4 className="pagina__titulo__desktop">Registrarte</h4>
         <form className="SignIn--form" onSubmit={handleSubmit}>
 
           {/* Input Nombre */}

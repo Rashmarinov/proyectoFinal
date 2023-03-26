@@ -345,6 +345,11 @@ body {
   margin: 10px;
 }
 
+.pagina__titulo__desktop {
+  font-size: 2rem;
+  margin: 10px;
+}
+
 /* ********* */
 /* @BUTTONS */
 /* ********* */
@@ -790,6 +795,67 @@ a {
   background-color: #12181F;
 }
 
+.imagenFormulario {
+  display: none;
+}
+
+.pagina__titulo__desktop {
+  display: none;
+}
+
+.container__Form {
+  text-align: center;
+}
+
+@media only screen and (min-width: 1000px) {
+  .imagenFormulario {
+    display: block;
+  }
+  .pagina__titulo__desktop {
+    display: block;
+  }
+  .pagina__titulo {
+    display: none;
+  }
+  .container__Form {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding-top: 80px;
+    margin: 40px;
+    background-color: #D9D9D9;
+  }
+  .logIn {
+    width: 607px;
+    height: 607px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .logIn--input, .logIn--button {
+    width: 65%;
+  }
+  .SignIn--input, .SignIn--button {
+    width: 65%;
+  }
+}
+.imagenPerfil {
+  display: none;
+}
+
 .apuntarsePartida {
   background-color: #F5F5F5;
   height: 420px;
@@ -807,6 +873,7 @@ a {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  text-align: left;
 }
 
 .apuntarsePartida--Info {
@@ -833,6 +900,57 @@ a {
           align-items: center;
 }
 
+@media only screen and (min-width: 1000px) {
+  .container__Form {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding-top: 80px;
+    margin: 40px;
+    background-color: #D9D9D9;
+  }
+  .apuntarsePartida {
+    width: 607px;
+    height: 607px;
+    margin-top: 0px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .apuntarsePartida--Info {
+    width: 65%;
+  }
+  .perfil {
+    width: 607px;
+    height: 607px;
+  }
+  .imagenPerfil {
+    display: block;
+  }
+  .imagenPerfil {
+    width: 400px;
+    border-radius: 50%;
+    -o-object-fit: contain;
+       object-fit: contain;
+  }
+  .separar {
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+  }
+}
 /* ********* */
 /* @THEMEDARK */
 /* ********* */
